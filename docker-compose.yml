@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  image_processor:
+    container_name: image_processor
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    volumes:
+      - ./logs:/imageProcessor/logs
+      - ./images:/imageProcessor/images
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./.env
