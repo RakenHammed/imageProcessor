@@ -1,3 +1,7 @@
+from os import path
+
+from werkzeug.utils import secure_filename
+
 from app.config import config
 from app.errors.image_processor_error import (
     InvalidImageProcessorRequestError,
@@ -14,6 +18,8 @@ class ImageProcessorService:
         if not self.allowed_file(image_file.filename):
             raise WrongImageFormatError("Wrong image format")
         self.image_file = image_file
+        self.image_file.filename = secure_filename(self.image_file.filename)
+        self.image_file.save(path.join(config.UPLOAD_FOLDER, self.image_file.filename))
 
     @staticmethod
     def allowed_file(image_name):
