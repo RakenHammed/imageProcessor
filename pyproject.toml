@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "image-processor"
+version = "0.1.0"
+description = ""
+authors = ["Raken Hammed <raken.hammed@gmail.com>"]
+readme = "README.md"
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+black = "22.10.0"
+isort = "5.10.1"
+pylint = "2.15.3"
+pre-commit = "2.20.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.8.0"
+
+[tool.black]
+profile = "black"
+
+[tool.isort]
+profile = "black"
