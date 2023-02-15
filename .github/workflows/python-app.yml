@@ -47,9 +47,10 @@ jobs:
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.PRIVATE_SSH_KEY }}
           port: 22
+          envs: DOCKERHUB_USERNAME,DOCKERHUB_TOKEN
           script: |
-            echo "I am $FOO"
-            echo "I am $BAR"
+            echo "I am $DOCKERHUB_USERNAME"
+            echo "I am $DOCKERHUB_TOKEN"
         
