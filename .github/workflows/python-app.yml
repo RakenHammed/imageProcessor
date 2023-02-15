@@ -34,29 +34,22 @@ jobs:
         with:
           push: true
           tags: rakenhammed/image_processor:image_processor
-      -
-        name: Download project as artifact
-        uses: actions/upload-artifact@main
-        with:
-          name: bundle
-          path: ./imageProcessor
   deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - 
-        name: Download artifact
-        uses: actions/download-artifact@main
-        with:
-          name: bundle
-          path: ./imageProcessor
-      - 
-        name: Deploy project with SSH
-        uses: easingthemes/ssh-deploy@v2.1.4
+      -
+        name: Deploy
+        uses: appleboy/ssh-action@v0.1.7
         env:
-         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-         REMOTE_USER: ${{ secrets.REMOTE_USER }}
-         SOURCE: "imageProcessor"
-         TARGET: "~/"
-  
+          DOCKERHUB_USERNAME: "BAR"
+          DOCKERHUB_TOKEN: "BAR"
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            echo "I am $FOO"
+            echo "I am $BAR"
+        
