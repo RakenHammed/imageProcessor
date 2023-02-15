@@ -50,10 +50,8 @@ jobs:
           key: ${{ secrets.PRIVATE_SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           port: 22
-          envs: DOCKERHUB_USERNAME,DOCKERHUB_TOKEN
           script: |
-            docker login --username=DOCKERHUB_USERNAME --password=DOCKERHUB_TOKEN
-            docker-compose down
-            docker-compose pull
-            docker-compose up -d
+            docker compose down
+            docker compose pull
+            docker compose up -d
         
