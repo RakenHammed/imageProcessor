@@ -36,7 +36,7 @@ jobs:
           tags: rakenhammed/image_processor:image_processor
       -
         name: Download project as artifact
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@main
         with:
           name: bundle
           path: ./imageProcessor
@@ -46,7 +46,7 @@ jobs:
     steps:
       - 
         name: Download artifact
-        uses: actions/download-artifact@master
+        uses: actions/download-artifact@main
         with:
           name: bundle
           path: ./imageProcessor
