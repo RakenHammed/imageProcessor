@@ -51,6 +51,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           port: 22
           script: |
+            cd ~/imageProcessor
             docker compose down
             docker compose pull
             docker compose up -d
